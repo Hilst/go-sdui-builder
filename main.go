@@ -13,7 +13,8 @@ import (
 // MAIN
 func main() {
 	router := gin.Default()
-	router.GET("/sample", getIndex)
+	router.GET("/", getIndex)
+	router.GET("/sample", getSample)
 	router.POST("/build", postBuild)
 
 	router.Run("localhost:8080")
@@ -21,6 +22,11 @@ func main() {
 
 // GET INDEX
 func getIndex(c *gin.Context) {
+	c.Status(http.StatusNoContent)
+}
+
+// GET SAMPLE
+func getSample(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, "SDUI Builder is here in GO")
 }
 
